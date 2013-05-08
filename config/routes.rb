@@ -1,4 +1,6 @@
 Destroyer::Application.routes.draw do
+  get "destroy/smash"
+
   root to: 'home#index'
 
   devise_for :users
@@ -9,6 +11,8 @@ Destroyer::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
+
+  match "destroy/*url" => "destroy#index"
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
