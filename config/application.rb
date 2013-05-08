@@ -11,6 +11,9 @@ end
 
 module Destroyer
   class Application < Rails::Application
+    require 'destroyer/settings'
+    config.assets.initialize_on_precompile = false
+    config.action_mailer.default_url_options = {host: Destroyer.settings.host}
     
     config.generators do |g|
       g.test_framework :rspec, routing_specs: false, views: false
