@@ -1,4 +1,7 @@
 Destroyer::Application.routes.draw do
+  resources :pages
+
+
   get "destroy/smash"
 
   root to: 'home#index'

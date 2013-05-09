@@ -17,5 +17,6 @@ module Destroyer
     config.active_record.whitelist_attributes = true
     config.assets.enabled = true
     config.assets.version = '1.0'
+    config.autoload_paths += %W(#{config.root}/lib/destroyer.rb)
   end
 end
