@@ -1,5 +1,9 @@
 # destroyer
 
+## How
+- rails
+- http://localhost:3000/destroy/nme.com
+
 ## What is this I don't even
 - Destroy the web
 
