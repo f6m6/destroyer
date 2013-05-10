@@ -5,14 +5,13 @@ require 'dreadnought'
 class Page < ActiveRecord::Base
   attr_accessible :content, :url
 
-  def self.create_from_url(url)
-    require 'open-uri'
-    content = open('http://' + url).to_a.join
-    @page = Page.new(url: url, content: content)
+  def self.create_from_url(attributes)
+    attributes[:content] = open('http://' + attributes[:url]).read
+    create(attributes)
   end
 
   def destroyed_content
-   # Dreadnought.new(@content).destroy
+    Dreadnought.new(content).destroy
   end
  
 end
