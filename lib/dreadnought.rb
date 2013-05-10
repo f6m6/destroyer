@@ -8,6 +8,7 @@ class Dreadnought
   def destroy
     demonise_images
     randomise_capitalisation
+    do_character_swaps
     doc.to_html
   end
   
@@ -28,7 +29,9 @@ class Dreadnought
 
   def randomly_capitalise(s)
     s = s.split("").map do |character|
-      rand(2).times { character.upcase!}
+      if rand(6) > 4
+        character = character.swapcase
+      end
       character
     end.join
   end
@@ -36,6 +39,22 @@ class Dreadnought
   def randomise_capitalisation
     doc.xpath("//text()").each do |node|
       node.content = randomly_capitalise(node.content.to_s)
+    end
+  end
+
+  def random_character_swap(s)
+    new_characters = "xjy_*".split("")
+    s = s.split("").map do |character|
+      if rand(11) > 9
+        character = new_characters.sample
+      end
+      character
+    end.join
+  end
+
+  def do_character_swaps
+    doc.xpath("//text()").each do |node|
+      node.content = random_character_swap(node.content.to_s)
     end
   end
 
