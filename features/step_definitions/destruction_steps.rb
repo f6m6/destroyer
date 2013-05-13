@@ -4,7 +4,7 @@ When(/^I destroy "(.*?)"$/) do |url|
 end
 
 Then(/^I should be on the "(.*?)" page$/) do |page|
-  current_path.should == pages_path(page)
+  current_path.should == path_to(page)
 end
 
 Then(/^I should see the destroy "(.*?)" markup$/) do |arg1|
