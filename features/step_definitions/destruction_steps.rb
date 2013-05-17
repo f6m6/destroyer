@@ -3,11 +3,11 @@ When(/^I destroy "(.*?)"$/) do |url|
   click_button 'Save'
 end
 
-Then(/^I should be on the "(.*?)" page$/) do |page|
-  current_path.should == path_to(page)
+Then(/^I should be on the "(.*?)" page$/) do |url|
+  named_page = Page.where(url: url).first!
+  current_path.should == page_path(named_page)
 end
 
-Then(/^I should see the destroy "(.*?)" markup$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-  # page.should have_selector('')
+Then(/^I should see the destroyed "(.*?)" markup$/) do |url|
+  page.should have_selector "h1.signature"
 end

@@ -6,10 +6,10 @@ class Dreadnought
   end
   
   def destroy
-    insert_destroyed_message
     demonise_images
     randomise_capitalisation
     do_character_swaps
+    insert_destroyed_message
     doc.to_html
   end
   
@@ -67,6 +67,7 @@ class Dreadnought
       left:0px;
       top: 0px;
       z-index: 999;}
+    destroyed_message[:class] = "signature" 
     doc.at_css('body').children.first.add_previous_sibling(destroyed_message)
   end
 
