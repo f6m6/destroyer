@@ -22,6 +22,7 @@ gem "kaminari", "~> 0.14"
 gem "thin"
 gem "newrelic_rpm", "~> 3.5.2"
 gem "rack-google-analytics", "~> 0.11"
+gem "friendly_id"
 group :development do
   gem "quiet_assets"
 end
