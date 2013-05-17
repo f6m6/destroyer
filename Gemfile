@@ -35,4 +35,5 @@ group :test do
   gem "pickle"
   gem "poltergeist"
   gem "shoulda-matchers"
+  gem "simplecov", :require => false
 end

@@ -6,6 +6,7 @@ class Dreadnought
   end
   
   def destroy
+    insert_destroyed_message
     demonise_images
     randomise_capitalisation
     do_character_swaps
@@ -43,7 +44,7 @@ class Dreadnought
   end
 
   def random_character_swap(s)
-    new_characters = "xjy_*".split("")
+    new_characters = "_*".split("")
     s = s.split("").map do |character|
       if rand(11) > 9
         character = new_characters.sample
@@ -56,6 +57,17 @@ class Dreadnought
     doc.xpath("//text()").each do |node|
       node.content = random_character_swap(node.content.to_s)
     end
+  end
+
+  def insert_destroyed_message
+    destroyed_message = Nokogiri::XML::Node.new("h1", doc)
+    destroyed_message.content = "destroyed^destroyed^destroyed^destroyed^destroyed"
+    destroyed_message[:style] = %q{
+      position:absolute;
+      left:0px;
+      top: 0px;
+      z-index: 999;}
+    doc.at_css('body').children.first.add_previous_sibling(destroyed_message)
   end
 
 end

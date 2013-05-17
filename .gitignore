@@ -16,3 +16,6 @@
 
 # Ignore test database
 db/structure.sql
+
+# Ignore simplecov coverage stuff
+coverage
