@@ -18,5 +18,6 @@ module Destroyer
     config.assets.enabled = true
     config.assets.version = '1.0'
     config.autoload_paths += %W(#{config.root}/lib/destroyer.rb)
+    config.autoload_paths << "#{Rails.root}/lib"
   end
 end

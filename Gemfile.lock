@@ -242,7 +242,7 @@ DEPENDENCIES
   quiet_assets
   rack-google-analytics (~> 0.11)
   rails (= 3.2.13)
-  rspec-rails (~> 2.11)
+  rspec-rails (~> 2.13)
   sass-rails (~> 3.2.3)
   seed-fu (~> 2.2)
   shoulda-matchers

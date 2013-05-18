@@ -27,7 +27,7 @@ group :development do
   gem "quiet_assets"
 end
 group :development, :test do
-  gem "rspec-rails", "~> 2.11"
+  gem "rspec-rails", "~> 2.13"
 end
 group :test do
   gem "cucumber-rails", "~> 1.3", :require => false
