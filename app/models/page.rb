@@ -4,7 +4,6 @@ require 'dreadnought'
 
 class Page < ActiveRecord::Base
   validates :url, presence: true, url: true
-  after_save :populate_content
 
   attr_accessible :content, :url
 
