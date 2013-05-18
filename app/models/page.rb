@@ -1,18 +1,19 @@
 require 'nokogiri'
 require 'open-uri'
 require 'dreadnought'
-require 'uri'
 
 class Page < ActiveRecord::Base
-  attr_accessible :content, :url
-  attr_writer :destroyer
+  validates :url, presence: true, url: true
+  after_save :populate_content
 
-  def self.create_from_url(attributes)
-    attributes[:content] = open('http://' + attributes[:url]).read
-    create(attributes)
+  attr_accessible :content, :url
+
+  def populate_content
+    self.update_attributes(content: open('http://' + url).read)
   end
 
   def destroyed_content
+    populate_content if content.nil?
     Dreadnought.new(content).destroy
   end
 end
