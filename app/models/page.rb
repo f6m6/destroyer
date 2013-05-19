@@ -16,3 +16,4 @@ class Page < ActiveRecord::Base
     Dreadnought.new(content).destroy
   end
 end
+
