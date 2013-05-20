@@ -3,9 +3,15 @@ require 'open-uri'
 require 'dreadnought'
 
 class Page < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :url, use: :slugged
+ 
   validates :url, presence: true, url: true
-
   attr_accessible :content, :url
+
+  def normalize_friendly_id(string)
+    string
+  end
 
   def populate_content
     self.update_attributes(content: open('http://' + url).read)
