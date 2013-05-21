@@ -233,6 +233,7 @@ DEPENDENCIES
   kgio (~> 2.7)
   machinist
   newrelic_rpm (~> 3.5.2)
+  nokogiri
   paranoia (~> 1.1)
   pg (~> 0.14)
   pickle
