@@ -102,6 +102,7 @@ GEM
     multi_json (1.7.3)
     newrelic_rpm (3.5.8.72)
     nokogiri (1.5.9)
+    open_uri_redirections (0.1.1)
     orm_adapter (0.4.0)
     paranoia (1.2.0)
       activerecord (>= 3.0.0)
@@ -234,6 +235,7 @@ DEPENDENCIES
   machinist
   newrelic_rpm (~> 3.5.2)
   nokogiri
+  open_uri_redirections
   paranoia (~> 1.1)
   pg (~> 0.14)
   pickle

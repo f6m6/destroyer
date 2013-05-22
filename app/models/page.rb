@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'open_uri_redirections'
 require 'dreadnought'
 
 class Page < ActiveRecord::Base
@@ -14,7 +15,8 @@ class Page < ActiveRecord::Base
   end
 
   def populate_content
-    self.update_attributes(content: open('http://' + url).read)
+    self.update_attributes(content:
+                           open('http://' + url, allow_redirections: :all).read)
   end
 
   def destroyed_content

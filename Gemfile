@@ -23,6 +23,7 @@ gem "newrelic_rpm", "~> 3.5.2"
 gem "rack-google-analytics", "~> 0.11"
 gem "friendly_id"
 gem "nokogiri"
+gem "open_uri_redirections"
 group :development do
   gem "quiet_assets"
 end
