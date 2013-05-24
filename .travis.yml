@@ -1,14 +1,22 @@
+---
 language: ruby
 rvm:
-  - "2.0.0"
-
+- 2.0.0
 bundler_args: --without development production
-
 env:
   global:
-    - RAILS_ENV=test
-
+  - RAILS_ENV=test
+  - secure: |-
+      jFPFNOjIAYuS0ZfEHjr1zyprbAq1ffC2IcLkt5uYpI5XxBabq1oax+0ibOIh
+      9Pa3QO+SbktlHzR2himFU3iJAgUFBk/bjGljqFmHfPif7bpd++NstBCJua2s
+      EyaDPFQeXldLg9i/PU0ZFv9bQJ3hUxzxWItTIwz5R+UyNrMJkJE=
+      9a054afb-e784-4fd7-9083-4bc72d78ea3a
 before_script:
-  - export CI=true USER=postgres
-  - psql -c 'create database destroyer_test' -U postgres
-  - RAILS_ENV=test bundle exec rake db:schema:load db:migrate
+- export CI=true USER=postgres
+- psql -c 'create database destroyer_test' -U postgres
+- RAILS_ENV=test bundle exec rake db:schema:load db:migrate
+after_success:
+ - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+ - heroku plugins:install https://github.com/ddollar/heroku-anvil
+ - heroku build -r intense-citadel-4116  -b
+   https://github.com/heroku/heroku-buildpack-ruby.git
