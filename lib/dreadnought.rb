@@ -6,6 +6,7 @@ class Dreadnought
   end
   
   def destroy
+    tilt_body
     demonise_images
     randomise_capitalisation
     do_character_swaps
@@ -18,6 +19,11 @@ class Dreadnought
   def doc
     @doc ||= Nokogiri::HTML(@html)
   end
+
+  def tilt_body
+    doc.css('body').first[:style] = "-webkit-transform: rotate(1deg);"
+  end
+
 
   def demonise_images
     doc.css('img').each do |node|
