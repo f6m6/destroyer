@@ -14,7 +14,7 @@ class PathProcessor
       elsif match_data = href.match(/^http(s?):\/\/(.*)/)
         new_href = "/pages/#{match_data[2]}"
       else
-        new_href = "/pages/#{@url}#{href}"
+        new_href = "/pages/#{url}#{href}"
       end
       anchor.attributes["href"].value = new_href
     end
