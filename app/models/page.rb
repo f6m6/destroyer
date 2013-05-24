@@ -16,13 +16,13 @@ class Page < ActiveRecord::Base
 
   def populate_content
     content = open('http://' + url, allow_redirections: :all).read
-    content = PathProcessor.new(url, content).process_paths
     self.update_attributes(content: content)
   end
 
   def destroyed_content
     populate_content if content.nil?
-    Dreadnought.new(content).destroy
+    path_processed_content = PathProcessor.new(url, content).process_paths
+    Dreadnought.new(path_processed_content).destroy
   end
 end
 
