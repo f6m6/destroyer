@@ -15,8 +15,9 @@ class Page < ActiveRecord::Base
   end
 
   def populate_content
-    self.update_attributes(content:
-                           open('http://' + url, allow_redirections: :all).read)
+    content = open('http://' + url, allow_redirections: :all).read
+    content = PathProcessor.new(url, content).process_paths
+    self.update_attributes(content: content)
   end
 
   def destroyed_content
